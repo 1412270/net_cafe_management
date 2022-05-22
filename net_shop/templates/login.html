@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-5 col-lg-4">
+        <div class="card">
+            <h5 class="card-header text-center">Đăng nhập</h5>
+            <div class="card-body">
+                <form method = "POST" action="{% url 'login' %}" class="px-4 py-3">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" type="text" class="form-control" placeholder="Username" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" class="form-control" placeholder="Password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary" value= "Login">Đăng nhập</button>
+                </form>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/register">Chưa có tài khoản? Đăng ký</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

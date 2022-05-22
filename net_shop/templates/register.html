@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 col-lg-4">
+    <div class="card">
+        <h5 class="card-header text-center">Đăng nhập</h5>
+        <div class="card-body">
+            <form method = "POST" action="{% url 'register' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input id="username" type="text" class="form-control" placeholder="Username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="firstname">First name</label>
+                    <input id="firstname" type="text" class="form-control" name="firstname">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last name</label>
+                    <input id="lastname" type="text" class="form-control" name="lastname">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" class="form-control" placeholder="Email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="number" class="form-control" placeholder="Phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input id="password1" type="password" class="form-control" name="password1">
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirm password</label>
+                    <input id="password2" type="password" class="form-control" name="password2">
+                </div>
+                <button type="submit" class="btn btn-primary" value= "signup" > Đăng ký </button>
+                {% if error %}
+                    {{ error }}
+
+                    <br/>
+                    <br/>
+                {% endif %}
+                <br/>
+            </form>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/login">Đã có tài khoản? Đăng nhập</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<p> Đã có tài khoản </p>
+<a href="/login"> Đăng nhập </a>

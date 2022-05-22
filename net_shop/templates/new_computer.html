@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% include "navigation.html" %}
+    <div class="container mt-5 col-lg-6">
+        <div class="card">
+            <h5 class="card-header text-center">Đăng ký thiết bị mới</h5>
+                <div class="card-body">
+                    <form method = "POST" action="{% url 'new_computer' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="computerName">Tên máy</label>
+                            <input type="text" class="form-control" id="computerName" placeholder="Computer name"
+                                   name="computerName">
+                        </div>
+                        <div class="form-group">
+                            <label for="ipAddress">Địa chỉ IP</label>
+                            <input type="text" class="form-control" id="ipAddress" placeholder="172.1.1.x"
+                                   name="ipAddress">
+                        </div>
+                        {% if error %}
+                            {{ error }}
+
+                            <br/>
+                        {% endif %}
+                        <div class="form-group">
+                            <label for="location">Vị trí</label>
+                            <input type="text" class="form-control" id="location" placeholder="Dãy x thứ y từ trái"
+                                   name="location">
+                        </div>
+                        <button type="submit" class="btn btn-primary" value= "New">Đăng ký</button>
+                    </form>
+                </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+    {% include "navigation.html" %}
+    <div class="container mt-5 col-lg-8">
+        <div class="card">
+            <h5 class="card-header">Danh sách thiết bị</h5>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Computer name</th>
+                        <th scope="col">IP address</th>
+                        <th scope="col">Location</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for computer in data %}
+                        <tr>
+                            <th>{{ computer.id }}</th>
+                            <td>{{ computer.name }}</td>
+                            <td>{{ computer.ip_address }}</td>
+                            <td>{{ computer.location }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <a href="/new_computer" class="btn btn-primary float-right">Add</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

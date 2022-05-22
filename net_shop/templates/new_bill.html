@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% include "navigation.html" %}
+    <div class="container mt-5 col-lg-6">
+        <div class="card">
+            <h5 class="card-header text-center">New bill</h5>
+            <div class="card-body">
+                <form method = "POST" action="{% url 'new_bill' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username"> Username </label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="computer">Computer</label>
+                        <select class="form-control" id="computer" name="computer">
+                            {% for computer in data %}
+                                <option value="{{ computer.id }}"> {{ computer.name }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="playtime">Play time</label>
+                        <select class="form-control" id="playtime" name="playtime" onchange="change_payment()">
+                            <option value=0>0</option>
+                            <option value=1>15 min</option>
+                            <option value=2>30 min</option>
+                            <option value=3>45 min</option>
+                            <option value=4>1 hour</option>
+                            <option value=5>1 hour 15 min</option>
+                            <option value=6>1 hour 30 min</option>
+                            <option value=7>1 hour 45 min</option>
+                            <option value=8>2 hour</option>
+                            <option value=9>2 hour 15 min</option>
+                            <option value=10>2 hour 30 min</option>
+                            <option value=11>2 hour 45 min</option>
+                            <option value=12>3 hour</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="other_fee">Other fee</label>
+                        <input type="number" class="form-control" id="other_fee" name="otherFee" onchange="change_payment()">
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPayment">Total Payment</label>
+                        <input type="number" class="form-control" id="totalPayment" name="totalPayment" readonly
+                               placeholder="0">
+                    </div>
+                    <button type="submit" class="btn btn-primary" value= "New">Đăng ký</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        function change_payment() {
+            let play_time = $("#playtime :selected").val()
+            let play_fee = parseInt(play_time)*5000
+            let other_fee = $("#other_fee").val()
+            if (other_fee !== "")
+                play_fee = play_fee + parseInt(other_fee)
+
+            document.getElementById("totalPayment").value = play_fee
+        }
+    </script>
+{% endblock %}
