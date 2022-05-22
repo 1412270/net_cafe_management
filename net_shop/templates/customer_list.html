@@ -11,11 +11,10 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Username</th>
-                        <th scope="col">First name</th>
-                        <th scope="col">Last name</th>
-                        <th scope="col">Phone</th>
+                        <th scope="col">Tên khách hàng</th>
+                        <th scope="col">Số điện thoại</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Wallet</th>
+                        <th scope="col">Số dư</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -23,8 +22,7 @@
                         <tr>
                             <th>{{ user.id }}</th>
                             <td>{{ user.username }}</td>
-                            <td>{{ user.first_name }}</td>
-                            <td>{{ user.last_name }}</td>
+                            <td>{{ user.fullname }}</td>
                             <td>{{ user.phone }}</td>
                             <td>{{ user.email }}</td>
                             <td>{{ user.wallet }}</td>
@@ -32,6 +30,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
+                <a href="/new_customer" class="btn btn-primary float-right">Thêm khách hàng</a>
             </div>
         </div>
     </div>

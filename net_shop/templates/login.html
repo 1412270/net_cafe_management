@@ -15,10 +15,13 @@
                         <label for="password">Password</label>
                         <input id="password" type="password" class="form-control" placeholder="Password" name="password">
                     </div>
+                    {% if error %}
+                        <p class="text-danger"> {{ error }} </p>
+                    {% endif %}
                     <button type="submit" class="btn btn-primary" value= "Login">Đăng nhập</button>
                 </form>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/register">Chưa có tài khoản? Đăng ký</a>
+                <a class="dropdown-item" href="/register">Chưa có tài khoản? <b class="text-primary"> Đăng ký </b></a>
             </div>
         </div>
     </div>

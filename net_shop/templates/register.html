@@ -3,21 +3,13 @@
 {% block content %}
 <div class="container mt-5 col-lg-4">
     <div class="card">
-        <h5 class="card-header text-center">Đăng nhập</h5>
+        <h5 class="card-header text-center">Đăng ký</h5>
         <div class="card-body">
             <form method = "POST" action="{% url 'register' %}">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input id="username" type="text" class="form-control" placeholder="Username" name="username">
-                </div>
-                <div class="form-group">
-                    <label for="firstname">First name</label>
-                    <input id="firstname" type="text" class="form-control" name="firstname">
-                </div>
-                <div class="form-group">
-                    <label for="lastname">Last name</label>
-                    <input id="lastname" type="text" class="form-control" name="lastname">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>

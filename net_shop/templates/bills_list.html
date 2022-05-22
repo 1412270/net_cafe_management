@@ -4,16 +4,16 @@
     {% include "navigation.html" %}
     <div class="container mt-5 col-lg-8">
         <div class="card">
-            <h5 class="card-header">Transaction history</h5>
+            <h5 class="card-header">Lịch sử giao dịch</h5>
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Computer</th>
-                        <th scope="col">Playtime</th>
-                        <th scope="col">Total payment</th>
+                        <th scope="col">Khách hàng</th>
+                        <th scope="col">Máy sử dụng</th>
+                        <th scope="col">Thời gian</th>
+                        <th scope="col">Tổng tiền</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -21,7 +21,7 @@
                     {% for bill in data %}
                         <tr>
                             <th>{{ bill.id }}</th>
-                            <td>{{ bill.user }}</td>
+                            <td>{{ bill.customer.fullname }}</td>
                             <td>{{ bill.computer.name }}</td>
                             <td>{{ bill.play_time|mul:15 }} mins</td>
                             <td>{{ bill.total_payment }}</td>
@@ -29,7 +29,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
-                <a href="/new_bill" class="btn btn-primary float-right">Create</a>
+                <a href="/new_bill" class="btn btn-primary float-right">Thêm giao dịch</a>
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@
     {% include "navigation.html" %}
     <div class="container mt-5 col-lg-6">
         <div class="card">
-            <h5 class="card-header text-center">New bill</h5>
+            <h5 class="card-header text-center">Hóa đơn mới</h5>
             <div class="card-body">
                 <form method = "POST" action="{% url 'new_bill' %}">
                     {% csrf_token %}
@@ -13,7 +13,7 @@
                         <input type="text" class="form-control" id="username" name="username" required>
                     </div>
                     <div class="form-group">
-                        <label for="computer">Computer</label>
+                        <label for="computer">Máy sử dụng</label>
                         <select class="form-control" id="computer" name="computer">
                             {% for computer in data %}
                                 <option value="{{ computer.id }}"> {{ computer.name }} </option>
@@ -21,7 +21,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="playtime">Play time</label>
+                        <label for="playtime">Thời gian dùng (5,000VND/15 phút)</label>
                         <select class="form-control" id="playtime" name="playtime" onchange="change_payment()">
                             <option value=0>0</option>
                             <option value=1>15 min</option>
@@ -39,15 +39,18 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="other_fee">Other fee</label>
+                        <label for="other_fee">Phí khác</label>
                         <input type="number" class="form-control" id="other_fee" name="otherFee" onchange="change_payment()">
                     </div>
                     <div class="form-group">
-                        <label for="totalPayment">Total Payment</label>
+                        <label for="totalPayment">Tổng thanh toán</label>
                         <input type="number" class="form-control" id="totalPayment" name="totalPayment" readonly
-                               placeholder="0">
+                               placeholder="Tiền thuê theo giờ + phụ phí(nếu có)">
                     </div>
-                    <button type="submit" class="btn btn-primary" value= "New">Đăng ký</button>
+                    {% if error %}
+                        <p class="text-danger"> {{ error }} </p>
+                    {% endif %}
+                    <button type="submit" class="btn btn-primary" value= "New">Tạo mới</button>
                 </form>
 
             </div>
