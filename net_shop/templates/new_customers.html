@@ -25,9 +25,7 @@
                         <input id="phone" type="number" class="form-control" name="phone">
                     </div>
                     {% if error %}
-                        {{ error }}
-
-                        <br/>
+                        <p class="text-danger"> {{ error }} </p>
                     {% endif %}
                     <button type="submit" class="btn btn-primary" value= "New">Đăng ký</button>
                 </form>

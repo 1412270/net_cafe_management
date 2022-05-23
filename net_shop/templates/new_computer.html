@@ -16,16 +16,14 @@
                             <label for="ipAddress">Địa chỉ IP</label>
                             <input type="text" class="form-control" id="ipAddress" name="ipAddress" required>
                         </div>
-                        {% if error %}
-                            {{ error }}
-
-                            <br/>
-                        {% endif %}
                         <div class="form-group">
                             <label for="location">Vị trí</label>
                             <input type="text" class="form-control" id="location" placeholder="Vị trí máy trong cửa hàng"
                                    name="location">
                         </div>
+                        {% if error %}
+                            <p class="text-danger"> {{ error }} </p>
+                        {% endif %}
                         <button type="submit" class="btn btn-primary" value= "New">Đăng ký</button>
                     </form>
                 </div>
