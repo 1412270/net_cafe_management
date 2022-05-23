@@ -1,6 +1,6 @@
 # net_cafe_management
 
-## Environment
+## Môi trường
 - Windows 10x64
 - Python 3.8
 
