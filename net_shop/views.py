@@ -10,10 +10,12 @@ def index(request):
     return render(request, 'home.html')
 
 
+# Đăng ký người dùng hệ thống
 def register(request):
     if request.method == "POST":
         if request.POST['password1'] == request.POST['password2']:
             try:
+                # Kiem tra ten dang nhap
                 User.objects.get(username=request.POST['username'])
                 return render(request, 'register.html', {'error': 'Tên đăng nhập đã tồn tại!'})
             except User.DoesNotExist:
@@ -27,6 +29,7 @@ def register(request):
         return render(request, 'register.html')
 
 
+# Đăng nhập
 def login(request):
     if request.method == 'POST':
         user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
@@ -39,6 +42,7 @@ def login(request):
         return render(request, 'login.html')
 
 
+# Đăng xuất
 def logout(request):
     if request.method == 'GET':
         auth.logout(request)
@@ -58,6 +62,7 @@ def add_funds(request):
         return redirect('home')
 
 
+# Thêm thiết bị mới
 @login_required(login_url='/login/')
 def new_computer(request):
     if request.method == "POST":
@@ -72,12 +77,14 @@ def new_computer(request):
         return render(request, 'new_computer.html')
 
 
+# Xem danh sách máy ở cửa hàng
 @login_required(login_url='/login/')
 def computer_list(request):
     computers = Computer.objects.all()
     return render(request, 'computer_list.html', {'data': computers})
 
 
+# Tạo hóa đơn mới
 @login_required(login_url='/login/')
 def new_bill(request):
     if request.method == "POST":
@@ -96,18 +103,21 @@ def new_bill(request):
         return render(request, 'new_bill.html', {'data': computers})
 
 
+# Xem sách thanh toán
 @login_required(login_url='/login/')
 def bill_list(request):
     bills = Bill.objects.all()
     return render(request, 'bills_list.html', {'data': bills})
 
 
+# Xem danh sách khách hàng
 @login_required(login_url='/login/')
 def get_customers(request):
     customers = Customer.objects.all()
     return render(request, 'customer_list.html', {'data': customers})
 
 
+# Tạo một người dùng mới
 @login_required(login_url='/login/')
 def new_customer(request):
     if request.method == "POST":
